@@ -21,11 +21,27 @@
             - else
               = yield
         %aside.span3
-          %h2
-            Recent Articles
-            %a{:href => "/archives"} Archive
-          %ol
-            - data.blog.articles[0...10].each do |article|
+          .well
+            %h2
+              Recent Articles
+              %a{:href => "/archives"} Archive
+            %ol
+              - data.blog.articles[0...10].each do |article|
+                %li
+                  %a{:href => article.url}= article.title
+                  %span= article.date.strftime('%b %e')
+          .well
+            %h2
+              My
+              = link_to "Github projects", "https://github.com/dplummer"
+            %ul
               %li
-                %a{:href => article.url}= article.title
-                %span= article.date.strftime('%b %e')
+                = link_to "donaldplummer-com", "https://github.com/dplummer/donaldplummer-com"
+                the code that generates this site
+              %li
+                = link_to "boxcutter", "https://github.com/dplummer/boxcutter"
+                a wrapper for BlueBoxGroup's API
+              %li
+                = link_to "dotfiles", "https://github.com/dplummer/dotfiles"
+                the config files for my linux setup
+
