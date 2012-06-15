@@ -1,0 +1,6 @@
+%article.hentry
+  %h1.entry-title
+    = current_article_title
+    %time.updated{:pubdate => ""}= current_article_date.strftime('%b %e %Y')
+  .entry-content
+    = yield_content :blog_article

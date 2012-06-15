@@ -1,0 +1,21 @@
+<!doctype html>
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge;chrome=1", "http-equiv" => "X-UA-Compatible"}/
+  %body
+    #main{:role => "main"}
+      - if is_blog_article?
+        - content_for :blog_article, yield
+        = partial settings.blog_article_template
+      - else
+        = yield
+    %aside
+      %h2
+        Recent Articles
+        %a{:href => "/archives"} Archive
+      %ol
+        - data.blog.articles[0...10].each do |article|
+          %li
+            %a{:href => article.url}= article.title
+            %span= article.date.strftime('%b %e')
