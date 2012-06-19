@@ -1,87 +1,79 @@
-GIT
-  remote: git://github.com/middleman/middleman-blog.git
-  revision: 1af7a5f094d239760dc8f5783c20ed5b0fd15508
-  specs:
-    middleman-blog (3.0.0.rc.1)
-      maruku (~> 0.6.0)
-      middleman-core (= 3.0.0.rc.1)
-
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
-    POpen4 (0.1.4)
-      Platform (>= 0.4.0)
-      open4
-    Platform (0.4.0)
     activesupport (3.2.6)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    addressable (2.2.8)
     builder (3.0.0)
     chunky_png (1.2.5)
     coderay (1.0.6)
-    commonjs (0.2.6)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.3.3)
     compass (0.12.1)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
-    compass-slickmap (0.5.1.1)
-      compass (>= 0.11.1)
-      haml (~> 3.1.0)
-      sass (~> 3.1.0)
     daemons (1.1.8)
-    diff-lcs (1.1.3)
+    em-websocket (0.3.6)
+      addressable (>= 2.1.1)
+      eventmachine (>= 0.12.9)
     eventmachine (0.12.10)
-    extlib (0.9.15)
-    fancy-buttons (1.2.0)
-      compass (>= 0.11)
-    ffi (1.0.11)
+    execjs (1.2.13)
+      multi_json (~> 1.0)
     fssm (0.2.9)
+    guard (0.6.3)
+      thor (~> 0.14.6)
+    guard-livereload (0.3.1)
+      em-websocket (>= 0.2.0)
+      guard (>= 0.4.0)
+      multi_json (~> 1.0.3)
     haml (3.1.6)
-    highline (1.6.13)
     hike (1.2.1)
-    httpclient (2.2.5)
+    http_router (0.10.2)
+      rack (>= 1.0.0)
+      url_mount (~> 0.2.1)
     i18n (0.6.0)
-    json (1.7.3)
-    json_pure (1.7.3)
-    less (2.2.1)
-      commonjs (~> 0.2.6)
     libv8 (3.3.10.4)
-    listen (0.4.5)
-      rb-fchange (~> 0.0.5)
-      rb-fsevent (~> 0.9.1)
-      rb-inotify (~> 0.8.8)
     maruku (0.6.0)
       syntax (>= 1.0.0)
-    middleman (0.14.1)
-      builder
-      compass (>= 0.10)
-      compass-slickmap
-      fancy-buttons
-      haml (>= 3.0)
-      json_pure
-      less
-      rack
-      rack-test
-      shotgun (>= 0.8)
-      sinatra (>= 1.0)
-      sinatra-content-for
-      smusher
-      sprockets
-      templater
-      thin
-      yui-compressor
-    middleman-core (3.0.0.rc.1)
-      activesupport (~> 3.2.4)
-      bundler (~> 1.1)
-      listen (~> 0.4.2)
-      rack (~> 1.4.0)
+    middleman (2.0.15.3)
+      coffee-script (~> 2.2.0)
+      compass (~> 0.11)
+      execjs (~> 1.2.7)
+      guard (~> 0.6.2)
+      haml (~> 3.1.0)
+      maruku (~> 0.6.0)
+      middleman-livereload (~> 0.2.0)
+      padrino-core (~> 0.10.5)
+      padrino-helpers (~> 0.10.5)
+      rack (~> 1.3.5)
       rack-test (~> 0.6.1)
-      thor (~> 0.14.3)
+      sass (>= 3.1.7)
+      sinatra (~> 1.3.1)
+      slim (~> 1.0.2)
+      sprockets (~> 2.0.3)
+      thin (~> 1.2.11)
+      thor (~> 0.14.0)
       tilt (~> 1.3.1)
-    multi_json (1.3.6)
+      uglifier (~> 1.2)
+    middleman-blog (0.1.5)
+    middleman-livereload (0.2.1)
+      guard-livereload (~> 0.3.1)
+    multi_json (1.0.4)
     nokogiri (1.5.4)
-    open4 (1.3.0)
-    rack (1.4.1)
+    padrino-core (0.10.6)
+      activesupport (~> 3.2.0)
+      http_router (~> 0.10.2)
+      sinatra (~> 1.3.1)
+      thor (~> 0.14.3)
+      tilt (~> 1.3.0)
+    padrino-helpers (0.10.6)
+      i18n (~> 0.6)
+      padrino-core (= 0.10.6)
+    rack (1.3.6)
     rack-codehighlighter (0.5.0)
       nokogiri (>= 1.4.1)
       rack (>= 1.0.0)
@@ -90,54 +82,42 @@ GEM
     rack-test (0.6.1)
       rack (>= 1.0)
     rake (0.9.2.2)
-    rb-fchange (0.0.5)
-      ffi
-    rb-fsevent (0.9.1)
-    rb-inotify (0.8.8)
-      ffi (>= 0.5.0)
     sass (3.1.19)
-    shotgun (0.9)
-      rack (>= 1.0)
     sinatra (1.3.2)
       rack (~> 1.3, >= 1.3.6)
       rack-protection (~> 1.2)
       tilt (~> 1.3, >= 1.3.3)
-    sinatra-content-for (0.1)
-      sinatra
-    smusher (0.4.9)
-      httpclient (>= 2.2)
-      json
-      rake
-    sprockets (2.4.3)
+    slim (1.0.4)
+      temple (~> 0.3.4)
+      tilt (~> 1.3.2)
+    sprockets (2.0.4)
       hike (~> 1.2)
-      multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     syntax (1.0.0)
-    templater (1.0.0)
-      diff-lcs (>= 1.1.2)
-      extlib (>= 0.9.5)
-      highline (>= 1.4.0)
+    temple (0.3.5)
     therubyracer (0.10.1)
       libv8 (~> 3.3.10)
-    thin (1.3.1)
+    thin (1.2.11)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
     thor (0.14.6)
     tilt (1.3.3)
-    yui-compressor (0.9.6)
-      POpen4 (>= 0.1.4)
+    uglifier (1.2.4)
+      execjs (>= 0.3.0)
+      multi_json (>= 1.0.2)
+    url_mount (0.2.1)
+      rack
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  builder
   coderay
-  middleman
-  middleman-blog!
-  middleman-core
+  middleman (~> 2.0)
+  middleman-blog
   rack-codehighlighter
   rake
-  rb-inotify
   therubyracer

@@ -1,7 +1,10 @@
+set :blog_layout_engine, 'haml'
+
 activate :blog
+
 # set :blog_permalink, ":year/:month/:day/:title.html"
 # set :blog_summary_separator, /READMORE/
-# set :blog_summary_length, 500
+set :blog_summary_length, nil
 
 page "/feed.xml", :layout => false
 
@@ -23,5 +26,5 @@ require 'rack/codehighlighter'
 
 use Rack::Codehighlighter,
   :coderay,
-  :element => "pre",
+  :element => "pre>code",
   :pattern =>  /\A:::([-_+\w]+)\s*\n/

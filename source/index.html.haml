@@ -2,7 +2,6 @@
   %article{:class => (i == 0) ? 'first' : ''}
     %h1
       %a{:href => article.url}= article.title
-      %span= article.date.strftime('%b %e %Y')
+    %time.updated{:updated => article.date.strftime("%Y-%m-%d")}= article.date.strftime('%b %e %Y')
     = article.summary
-    .more
-      %a{:href => article.url} read on &raquo;
+  %hr

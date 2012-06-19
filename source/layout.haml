@@ -3,8 +3,6 @@
   %head
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge;chrome=1", "http-equiv" => "X-UA-Compatible"}/
-    %link{:href => '/css/bootstrap.min.css', :rel => 'stylesheet'}
-    %link{:href => '/css/bootstrap-responsive.min.css', :rel => 'stylesheet'}
     %link{:href => '/css/app.css', :rel => 'stylesheet'}
   %body
     .navbar.navbar-fixed-top
@@ -13,16 +11,22 @@
           = link_to "Donald's Blog", '/', :class => 'brand'
     .container
       .row
-        #main.span9{:role => "main"}
-          .container
+        .span9
+          #main{:role => "main"}
             - if is_blog_article?
               - content_for :blog_article, yield
               = partial settings.blog_article_template
             - else
               = yield
-        %aside.span3
+        %aside.span3.sidebar
+          .thumbnails
+            .span3
+              .thumbnail
+                %img{:src => '/img/donald-drinking-beer-thumb.png'}
+                %h5 Donald Plummer
+                %p I'm a software developer in Seattle, WA.
           .well
-            %h2
+            %h3
               Recent Articles
               %a{:href => "/archives"} Archive
             %ol
@@ -31,17 +35,31 @@
                   %a{:href => article.url}= article.title
                   %span= article.date.strftime('%b %e')
           .well
-            %h2
+            %h3
               My
               = link_to "Github projects", "https://github.com/dplummer"
-            %ul
-              %li
+            %dl
+              %dt
                 = link_to "donaldplummer-com", "https://github.com/dplummer/donaldplummer-com"
+              %dd
                 the code that generates this site
-              %li
+            %dl
+              %dt
                 = link_to "boxcutter", "https://github.com/dplummer/boxcutter"
+              %dd
                 a wrapper for BlueBoxGroup's API
-              %li
+            %dl
+              %dt
                 = link_to "dotfiles", "https://github.com/dplummer/dotfiles"
+              %dd
                 the config files for my linux setup
+          .well
+            %h3 My Work
+            %dl
+              %dt= link_to "CrystalCommerce", "http://www.crystalcommerce.com"
+              %dd
+                A small company based in Seattle, WA which provides a
+                feature-rich e-commerce solution for hobby and gaming
+                stores.
+
 
