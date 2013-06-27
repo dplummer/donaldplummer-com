@@ -9,4 +9,4 @@ gem "therubyracer"
 gem 'rake'
 gem "rack-codehighlighter", :require => 'rack/codehighlighter'
 gem "coderay"
-
+gem "haml"

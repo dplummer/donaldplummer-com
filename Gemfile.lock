@@ -116,6 +116,7 @@ PLATFORMS
 DEPENDENCIES
   builder
   coderay
+  haml
   middleman (~> 2.0)
   middleman-blog
   rack-codehighlighter
