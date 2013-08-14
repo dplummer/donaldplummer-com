@@ -17,8 +17,8 @@ activate :blog do |blog|
   # blog.day_link = ":year/:month/:day.html"
   # blog.default_extension = ".markdown"
 
-  blog.tag_template = "tag.html"
-  blog.calendar_template = "calendar.html"
+  #blog.tag_template = "tag.html"
+  #blog.calendar_template = "calendar.html"
 
   # blog.paginate = true
   # blog.per_page = 10

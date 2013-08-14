@@ -6,21 +6,18 @@ date: 24/06/2013
 %ol
   %li
     Get the default gem set:
-    %pre
-      :preserve
-        rvm list default
+    :codeshell
+      $ rvm list default
   %li
     :markdown
       Create a [wrapper script](http://rvm.io/integration/init-d) for the
       init script to use
-    %pre
-      :preserve
-        # rvm wrapper ruby-1.9.3-p374-railsexpress bootup god
+    :codeshell
+      $ rvmsudo wrapper ruby-1.9.3-p374-railsexpress bootup god
   %li
     Create the directory god will log to:
-    %pre
-      :preserve
-        # mkdir /var/log/god
+    :codeshell
+      $ sudo mkdir /var/log/god
   %li
     Create the <code>/etc/init.d/god</code> init script:
     :codebash

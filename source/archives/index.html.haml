@@ -1,7 +1,7 @@
 %h1
   Archive:
 %ul.archives
-  - data.blog.articles.each do |entry|
+  - blog.articles.each do |entry|
     %li
       %a{:href => entry.url}= entry.title
       %span= entry.date.strftime('%b %e')
