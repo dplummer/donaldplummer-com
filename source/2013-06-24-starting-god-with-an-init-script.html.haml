@@ -23,118 +23,114 @@ date: 24/06/2013
         # mkdir /var/log/god
   %li
     Create the <code>/etc/init.d/god</code> init script:
-    %pre
-      :preserve
-        #!/bin/bash
-        #
-        # God under multi-user RVM
-        #
-        # http://god.rubyforge.org
-        # http://beginrescueend.com/integration/god/
-        #
-        # chkconfig: - 85 15
-        # description: Control the God gem. Expects the gem to \
-        #              to be installed under a multi-user RVM \
-        #              installation. Requires RVM wrapper.
-        #
+    :codebash
+      #!/bin/bash
+      #
+      # God under multi-user RVM
+      #
+      # http://god.rubyforge.org
+      # http://beginrescueend.com/integration/god/
+      #
+      # chkconfig: - 85 15
+      # description: Control the God gem. Expects the gem to \
+      #              to be installed under a multi-user RVM \
+      #              installation. Requires RVM wrapper.
+      #
 
-        ### BEGIN INIT INFO
-        # Provides:          god
-        # Required-Start:    $remote_fs $network
-        # Required-Stop:     $remote_fs $network
-        # Default-Start:
-        # Default-Stop:
-        # Description:       God under multi-user RVM
-        # Short-Description: Control God under multi-user RVM
-        ### END INIT INFO
+      ### BEGIN INIT INFO
+      # Provides:          god
+      # Required-Start:    $remote_fs $network
+      # Required-Stop:     $remote_fs $network
+      # Default-Start:
+      # Default-Stop:
+      # Description:       God under multi-user RVM
+      # Short-Description: Control God under multi-user RVM
+      ### END INIT INFO
 
-        # Source function library.
-        . /etc/rc.d/init.d/functions
+      # Source function library.
+      . /etc/rc.d/init.d/functions
 
-        prog=god
-        exec=/usr/local/rvm/bin/bootup_$prog
+      prog=god
+      exec=/usr/local/rvm/bin/bootup_$prog
 
-        # Default values.
-        CONFIG_FILE=/etc/god.conf.rb
-        LOG_FILE=/var/log/god/god.log
-        LOG_LEVEL=info
-        PID_FILE=/var/run/god/god.pid
+      # Default values.
+      CONFIG_FILE=/etc/god.conf.rb
+      LOG_FILE=/var/log/god/god.log
+      LOG_LEVEL=info
+      PID_FILE=/var/run/god/god.pid
 
-        start_god() {
-          [ -x $exec ] || exit 5
-          echo -n $"Starting $prog: "
-          status_god_quiet && echo -n "already running" && warning && echo && exit 0
-          daemon --user root "$exec \
-            -c $CONFIG_FILE \
-            -l $LOG_FILE \
-            --log-level $LOG_LEVEL \
-            -P $PID_FILE >/dev/null"
+      start_god() {
+        [ -x $exec ] || exit 5
+        echo -n $"Starting $prog: "
+        status_god_quiet && echo -n "already running" && warning && echo && exit 0
+        daemon --user root "$exec \
+          -c $CONFIG_FILE \
+          -l $LOG_FILE \
+          --log-level $LOG_LEVEL \
+          -P $PID_FILE >/dev/null"
+        retval=$?
+        echo
+        return $retval
+      }
+
+      stop_god() {
+        echo -n $"Stopping $prog: "
+        retval=0
+        if ! status_god_quiet ; then
+          echo -n "already stopped" && warning
+        else
+          $exec quit >/dev/null
           retval=$?
-          echo
-          return $retval
-        }
+        fi
+        echo
+        return $retval
+      }
 
-        stop_god() {
-          echo -n $"Stopping $prog: "
-          retval=0
-          if ! status_god_quiet ; then
-            echo -n "already stopped" && warning
-          else
-            $exec quit >/dev/null
-            retval=$?
-          fi
-          echo
-          return $retval
-        }
+      restart_god() {
+        stop_god
+        start_god
+      }
 
-        restart_god() {
-          stop_god
+      status_god() {
+        status -p $PID_FILE $prog
+      }
+
+      status_god_quiet() {
+        status_god >/dev/null 2>&1
+      }
+        
+      case "$1" in
+        start)
           start_god
-        }
+          ;;
+        stop)
+          stop_god
+          ;;
+        restart)
+          restart_god
+          ;;
+        status)
+          status_god
+          ;;
+        *)
+          echo $"Usage: $0 {start|stop|status|restart}"
+          exit 2
+      esac
 
-        status_god() {
-          status -p $PID_FILE $prog
-        }
-
-        status_god_quiet() {
-          status_god >/dev/null 2>&1
-        }
-         
-        case "$1" in
-          start)
-            start_god
-            ;;
-          stop)
-            stop_god
-            ;;
-          restart)
-            restart_god
-            ;;
-          status)
-            status_god
-            ;;
-          *)
-            echo $"Usage: $0 {start|stop|status|restart}"
-            exit 2
-        esac
-
-        exit $?
+      exit $?
   %li
     Be sure to change the <code>CONFIG_FILE</code> setting in the init script
     to match the location of the god config file you want to use.
   %li
     Make it executable:
-    %pre
-      :preserve
-        # chmod +x /etc/init.d/god
+    :codeshell
+      > chmod +x /etc/init.d/god
   %li
     Add it to <code>chkconfig</code>:
-    %pre
-      :preserve
-        # chkconfig --add god
-        # chkconfig god on
+    :codeshell
+      > chkconfig --add god
+      > chkconfig god on
   %li
     Start god:
-    %pre
-      :preserve
-        # /etc/init.d/god start
+    :codeshell
+      > /etc/init.d/god start

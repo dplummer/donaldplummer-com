@@ -3,7 +3,8 @@
   %head
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge;chrome=1", "http-equiv" => "X-UA-Compatible"}/
-    %link{:href => '/css/app.css', :rel => 'stylesheet'}
+    = stylesheet_link_tag "screen"
+    -# %link{:href => '/css/app.css', :rel => 'stylesheet'}
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
@@ -13,11 +14,7 @@
       .row
         .span9
           #main{:role => "main"}
-            - if is_blog_article?
-              - content_for :blog_article, yield
-              = partial settings.blog_article_template
-            - else
-              = yield
+            = yield
         %aside.span3.sidebar
           .thumbnails
             .span3

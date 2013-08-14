@@ -38,6 +38,11 @@ configure :build do
   activate :minify_css
   activate :minify_javascript
   activate :cache_buster
+  activate :minify_html
+  activate :gzip
 end
 
 activate :livereload
+activate :syntax
+
+require './code'
