@@ -30,7 +30,7 @@
               Recent Articles
               %a{:href => "/archives"} Archive
             %ol
-              - data.blog.articles[0...10].each do |article|
+              - blog.articles[0...10].each do |article|
                 %li
                   %a{:href => article.url}= article.title
                   %span= article.date.strftime('%b %e')
@@ -61,5 +61,4 @@
                 A small company based in Seattle, WA which provides a
                 feature-rich e-commerce solution for hobby and gaming
                 stores.
-
-
+    = javascript_include_tag "app"

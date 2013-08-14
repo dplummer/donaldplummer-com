@@ -1,12 +1,11 @@
-source :rubygems
+source "https://rubygems.org"
 
-gem "middleman", "~> 2.0"
-gem "builder"
-# gem "middleman-more"
-gem "middleman-blog"#, :github => "middleman/middleman-blog", :require => 'middleman-blog'
-gem "therubyracer"
-# gem 'rb-inotify'
-gem 'rake'
-gem "rack-codehighlighter", :require => 'rack/codehighlighter'
-gem "coderay"
-gem "haml"
+gem "middleman",            "~> 3.0"
+
+gem "nokogiri"
+gem "builder",              "~> 3.0"
+gem "haml",                 "~> 4.0"
+gem "middleman-blog",       "~> 3.2"
+gem "middleman-livereload", "~> 3.0"
+gem "rb-inotify",           "~> 0.9"
+gem "sass",                 "~> 3.2"
