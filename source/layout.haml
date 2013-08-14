@@ -4,12 +4,18 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge;chrome=1", "http-equiv" => "X-UA-Compatible"}/
     = stylesheet_link_tag "screen"
-    -# %link{:href => '/css/app.css', :rel => 'stylesheet'}
+    %title Donald Plummer's Blog
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container
-          = link_to "Donald's Blog", '/', :class => 'brand'
+        = link_to "Donald's Blog", '/', :class => 'brand'
+        %ul.nav.pull-right
+          %li
+            %a{:href => "https://github.com/dplummer"}
+              %img{src: "/img/github.png", width: 32, height: 32}
+          %li
+            %a{:href => "/feed.xml"}
+              %img{src: "/img/feed.svg", width: 32, height: 32}
     .container
       .row
         .span9
