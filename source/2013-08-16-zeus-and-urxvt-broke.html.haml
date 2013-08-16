@@ -1,0 +1,19 @@
+---
+title: Archlinux Zeus and URXVT broken with latest glibc
+date: 16/010/2013
+---
+
+:markdown
+  When running `sudo pacman -Syu` today, I found that both zeus and urxvt
+  broke. I use urxvt as my terminal, and at first I was at a loss as to how to
+  troubleshoot, till my coworker pointed out I could just run `xterm`.
+
+  zeus breaks with "exit status 1" and then just hanging.
+
+  urxvt breaks with "urxvt: can't initialize pseudo-tty, aborting"
+
+  In both cases, when I downgraded `glibc` to 2.17-6 the problem was fixed. I
+  needed to also downgrade `binutils` to 2.23.2-2.
+
+  At least, it was on my desktop. My laptop is still having the zeus problem,
+  so I'm not sure what the cause there is.
