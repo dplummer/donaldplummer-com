@@ -4,7 +4,7 @@
     %meta{:charset => "utf-8"}/
     %meta{:content => "IE=edge;chrome=1", "http-equiv" => "X-UA-Compatible"}/
     = stylesheet_link_tag "screen"
-    %title Donald Plummer's Blog
+    %title Donald Plummer's Blog - #{current_page.data.title}
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
@@ -28,6 +28,7 @@
                 %img{:src => '/img/donald-drinking-beer-thumb.png'}
                 %h5 Donald Plummer
                 %p I'm a software developer in Seattle, WA.
+                %p= link_to "My resume", "/resume.html"
           .well
             %h3
               Recent Articles
@@ -56,6 +57,11 @@
                 = link_to "dotfiles", "https://github.com/dplummer/dotfiles"
               %dd
                 the config files for my linux setup
+            %dl
+              %dt
+                = link_to "amazon_mws_products", "https://github.com/dplummer/amazon_mws_products"
+              %dd
+                a gem for interacting with the AmazonMws Products API
           .well
             %h3 My Work
             %dl
